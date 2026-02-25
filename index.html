@@ -27,7 +27,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- AdSense (conditional: skip in TWA) -->
+  <!-- AdSense verification -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9202142689270811" crossorigin="anonymous"></script>
+
+  <!-- AdSense (conditional push: skip in TWA) -->
   <script>
     var isAndroidAppReferrer = (document.referrer || '').startsWith('android-app://');
     var isLikelyTWA = isAndroidAppReferrer;
@@ -65,22 +68,15 @@
     }
 
     if (window.__ADS_ENABLED__) {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9202142689270811';
-      s.crossOrigin = 'anonymous';
-      s.onload = function () {
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function () {
-            requestAnimationFrame(pushAllAds);
-            setTimeout(pushAllAds, 300);
-          });
-        } else {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
           requestAnimationFrame(pushAllAds);
           setTimeout(pushAllAds, 300);
-        }
-      };
-      document.head.appendChild(s);
+        });
+      } else {
+        requestAnimationFrame(pushAllAds);
+        setTimeout(pushAllAds, 300);
+      }
     }
   </script>
 
