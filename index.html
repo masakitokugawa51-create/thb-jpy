@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -8,13 +8,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="THB/JPY">
   
-  <title>Thai Baht to Japanese Yen Converter | THB to JPY Live Rate | Free Calculator</title>
-  <meta name="description" content="Convert Thai Baht to Japanese Yen instantly. Free THB to JPY calculator with live exchange rates. Works offline.">
-  <meta name="keywords" content="thai baht to yen, thb to jpy, thailand yen converter, thai baht yen calculator, thb jpy rate, currency converter">
+  <title>タイバーツ円換算 | THB to JPY リアルタイム為替レート | 無料計算機</title>
+  <meta name="description" content="タイバーツから日本円への即時換算。無料THB/JPY計算機、リアルタイム為替レート対応。オフラインでも使えます。">
+  <meta name="keywords" content="タイバーツ 円, thb to jpy, タイバーツ 日本円 換算, タイバーツ 円 計算, タイ 為替レート, 通貨換算">
   <link rel="canonical" href="https://thb-jpy.vercel.app/">
   
-  <meta property="og:title" content="Thai Baht to Japanese Yen Converter | Live THB/JPY Rate">
-  <meta property="og:description" content="Convert Thai Baht to Japanese Yen instantly with live rates. Free, fast, no signup required.">
+  <meta property="og:title" content="タイバーツ円換算 | THB/JPY リアルタイム為替レート">
+  <meta property="og:description" content="タイバーツから日本円への即時換算。無料・高速・登録不要。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thb-jpy.vercel.app/">
   
@@ -53,7 +53,8 @@
       try {
         var slots = [
           {wrap: document.getElementById('adTop'), ins: document.querySelector('#adTop ins.adsbygoogle')},
-          {wrap: document.getElementById('adMid'), ins: document.querySelector('#adMid ins.adsbygoogle')}
+          {wrap: document.getElementById('adMid'), ins: document.querySelector('#adMid ins.adsbygoogle')},
+          {wrap: document.getElementById('adBottom'), ins: document.querySelector('#adBottom ins.adsbygoogle')}
         ];
         for (var i = 0; i < slots.length; i++) {
           var w = slots[i].wrap, el = slots[i].ins;
@@ -97,7 +98,7 @@
     .premium-banner-text { color: var(--premium-red); font-size: 14px; font-weight: 700; }
     .premium-banner.hidden { display: none; }
     .ad-slot { margin: 4px 0; align-items: center; justify-content: center; border-radius: 10px; flex-shrink: 0; overflow: hidden; }
-    #adTop, #adMid { display: none; }
+    #adTop, #adMid, #adBottom { display: none; }
     .ad-slot.show { display: flex; }
     .ad-slot ins.adsbygoogle[data-ad-status="filled"] { min-height: 50px; }
     .rate-bar { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 0; }
@@ -162,7 +163,7 @@
     .premium-footer-links { display: flex; gap: 16px; margin-top: 16px; }
     .premium-footer-links a { color: var(--text-dim); font-size: 12px; text-decoration: underline; }
     @media (max-height: 700px) { .num-key { width: 60px; height: 60px; font-size: 22px; } .numpad { gap: 8px; } .numpad-row { gap: 12px; } .field { padding: 14px 16px; } .field-value { font-size: 24px; } }
-    @media (max-height: 600px) { .num-key { width: 50px; height: 50px; font-size: 20px; } .numpad { gap: 6px; } .numpad-row { gap: 10px; } .ad-slot#adMid { display: none; } }
+    @media (max-height: 600px) { .num-key { width: 50px; height: 50px; font-size: 20px; } .numpad { gap: 6px; } .numpad-row { gap: 10px; } .ad-slot#adMid { display: none; } .ad-slot#adBottom { display: none; } }
   </style>
 </head>
 <body>
@@ -199,6 +200,9 @@
     <div class="numpad-row"><button class="num-key" onclick="handleKey('7')">7</button><button class="num-key" onclick="handleKey('8')">8</button><button class="num-key" onclick="handleKey('9')">9</button></div>
     <div class="numpad-row"><button class="num-key" onclick="handleKey('.')">.</button><button class="num-key" onclick="handleKey('0')">0</button><button class="num-key clear" onclick="handleKey('C')">C</button></div>
   </div>
+  <div class="ad-slot" id="adBottom">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9202142689270811" data-ad-slot="6322011824" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
   <div class="footer">
     <div class="footer-row"><span style="font-size:11px">🔄</span><span class="footer-text" id="footerText">最終更新 --:--</span></div>
     <div class="footer-premium" id="footerPremium" onclick="showPremium()">プレミアムでリアルタイムレートを解除</div>
@@ -210,7 +214,7 @@
   <div class="premium-gift">🎁</div>
   <div class="premium-title">プレミアムを解除</div>
   <div class="premium-features">
-    <div class="premium-feature"><span class="premium-feature-icon">💱</span><span>THB/JPYを即座に変換</span></div>
+    <div class="premium-feature"><span class="premium-feature-icon">💱</span><span>タイバーツ/円を即座に変換</span></div>
     <div class="premium-feature"><span class="premium-feature-icon">📡</span><span>オフラインでも換算OK</span></div>
     <div class="premium-feature"><span class="premium-feature-icon">⏱️</span><span>オンライン時はレート自動更新</span></div>
     <div class="premium-feature"><span class="premium-feature-icon">🚫</span><span>すべての広告を削除</span></div>
@@ -221,7 +225,7 @@
         <span class="premium-plan-name">年間プラン</span>
         <span class="premium-plan-price" id="yearlyPrice"><span class="original">¥36,400</span>¥2,500 / 年</span>
       </div>
-      <span class="premium-plan-badge">SAVE 93%</span>
+      <span class="premium-plan-badge">93%お得</span>
       <div class="premium-plan-radio"></div>
     </div>
     <div class="premium-plan selected" id="planWeekly" onclick="selectPlan('weekly')">
@@ -244,12 +248,12 @@
 </div>
 
 <div class="seo-content">
-  <h1>Thai Baht to Japanese Yen Converter - THB to JPY Calculator</h1>
-  <p>Convert Thai Baht to Japanese Yen instantly. Free THB to JPY calculator with live exchange rates.</p>
+  <h1>タイバーツ円換算 - THB/JPY為替レート計算機</h1>
+  <p>タイバーツから日本円への即時換算。無料THB/JPY計算機、リアルタイム為替レート対応。</p>
 </div>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Thai Baht to Japanese Yen Converter","description":"Convert Thai Baht to Japanese Yen instantly with live exchange rates.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"タイバーツ円換算","description":"タイバーツから日本円への即時換算。無料為替レート計算機。","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 
 <script>
@@ -286,7 +290,7 @@ function updateUI(){
   rateValueEl.className='rate-value '+dir;
   if(change24h){changeBadge.style.display='inline';changeBadge.textContent=(change24h>0?'+':'')+change24h+'%';
   changeBadge.className='change-badge '+(change24h>0?'positive':'negative');}
-  if(lastUpdated)footerText.textContent='最終更新 '+lastUpdated.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  if(lastUpdated)footerText.textContent='最終更新 '+lastUpdated.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
   updateConversion();
 }
 function updateConversion(){
@@ -322,60 +326,38 @@ if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(
 
 /* ========== PLAY BILLING ========== */
 const SKU_WEEKLY='thb_jpy_premium_weekly',SKU_YEARLY='thb_jpy_premium_yearly';
-let dgService=null;
+let isPremium=false,selectedPlan='weekly',trialEnabled=true,dgService=null;
 
 async function initBilling(){
-  if('getDigitalGoodsService'in window){
-    try{dgService=await window.getDigitalGoodsService('https://play.google.com/billing');
-    console.log('[Billing] DG API connected');await checkExistingPurchases();await loadSkuDetails();
-    }catch(e){console.log('[Billing] DG API not available:',e);}
-  }
+  if(!('getDigitalGoodsService'in window)){
+    isPremium=localStorage.getItem('thb_jpy_premium')==='1';applyPremiumState();return;}
+  try{dgService=await window.getDigitalGoodsService('https://play.google.com/billing');
+    await checkExistingPurchases();await loadSkuDetails();
+  }catch(e){isPremium=localStorage.getItem('thb_jpy_premium')==='1';}
+  applyPremiumState();
 }
+
 async function checkExistingPurchases(){
   if(!dgService)return;
   try{var purchases=await dgService.listPurchases();
     for(var i=0;i<purchases.length;i++){
       if(purchases[i].itemId===SKU_WEEKLY||purchases[i].itemId===SKU_YEARLY){
-        isPremium=true;localStorage.setItem('thb_jpy_premium','1');applyPremiumState();return;
-      }
-    }
-  }catch(e){console.log('[Billing] listPurchases error:',e);}
+        isPremium=true;localStorage.setItem('thb_jpy_premium','1');return;}}
+    isPremium=false;localStorage.removeItem('thb_jpy_premium');
+  }catch(e){}
 }
+
 async function loadSkuDetails(){
   if(!dgService)return;
-  try{
-    var details=await dgService.getDetails([SKU_WEEKLY,SKU_YEARLY]);
+  try{var details=await dgService.getDetails([SKU_WEEKLY,SKU_YEARLY]);
     for(var i=0;i<details.length;i++){
       var item=details[i];
       var price=new Intl.NumberFormat(navigator.language,{style:'currency',currency:item.price.currency}).format(item.price.value);
       if(item.itemId===SKU_WEEKLY){document.getElementById('weeklyPrice').textContent='その後 '+price+' / 週';}
       else if(item.itemId===SKU_YEARLY){document.getElementById('yearlyPrice').innerHTML='<span class="original">¥36,400</span>'+price+' / 年';}
     }
-  }catch(e){console.log('[Billing] getDetails error:',e);}
+  }catch(e){}
 }
-
-/* ========== PREMIUM ========== */
-let isPremium=localStorage.getItem('thb_jpy_premium')==='1';
-let selectedPlan='weekly',trialEnabled=true;
-
-function applyPremiumState(){
-  var b=document.getElementById('premiumBanner'),f=document.getElementById('footerPremium');
-  if(isPremium){b.classList.add('hidden');f.classList.add('hidden');
-    var t=document.getElementById('adTop'),m=document.getElementById('adMid');
-    if(t)t.style.display='none';if(m)m.style.display='none';
-  }else{b.classList.remove('hidden');f.classList.remove('hidden');}
-}
-function showPremium(){document.getElementById('premiumOverlay').classList.remove('hidden');}
-function closePremium(){document.getElementById('premiumOverlay').classList.add('hidden');}
-function selectPlan(plan){selectedPlan=plan;
-  document.getElementById('planYearly').className='premium-plan'+(plan==='yearly'?' selected':'');
-  document.getElementById('planWeekly').className='premium-plan'+(plan==='weekly'?' selected':'');updateCtaText();}
-function toggleTrial(){trialEnabled=!trialEnabled;
-  document.getElementById('trialToggle').className='premium-toggle'+(trialEnabled?'':' off');updateCtaText();}
-function updateCtaText(){var cta=document.getElementById('premiumCta');
-  if(trialEnabled&&selectedPlan==='weekly')cta.textContent='無料で始める \u276F';
-  else if(selectedPlan==='yearly')cta.textContent='登録する \u2014 \u00A52,500/年 \u276F';
-  else cta.textContent='登録する \u2014 \u00A5700/週 \u276F';}
 
 async function handlePurchase(){
   var sku=selectedPlan==='yearly'?SKU_YEARLY:SKU_WEEKLY;
@@ -390,9 +372,8 @@ async function handlePurchase(){
       var ok=await verifyPurchaseOnBackend(token,sku);
       if(ok){isPremium=true;localStorage.setItem('thb_jpy_premium','1');await resp.complete('success');applyPremiumState();closePremium();}
       else{await resp.complete('fail');alert('購入の確認に失敗しました。もう一度お試しください。');}
-    }catch(e){console.log('[Billing] Purchase cancelled:',e);}
-    cta.disabled=false;updateCtaText();return;
-  }
+    }catch(e){}
+    cta.disabled=false;updateCtaText();return;}
   isPremium=true;localStorage.setItem('thb_jpy_premium','1');applyPremiumState();closePremium();
 }
 
@@ -400,20 +381,40 @@ async function verifyPurchaseOnBackend(purchaseToken,sku){
   try{var res=await fetch('/api/verify-purchase',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({purchaseToken:purchaseToken,sku:sku})});
     var data=await res.json();return data.valid===true;
-  }catch(e){console.error('[Billing] Backend verify failed:',e);return false;}
+  }catch(e){return false;}
 }
 
 async function handleRestore(){
-  if(dgService){await checkExistingPurchases();
+  if(dgService){await checkExistingPurchases();applyPremiumState();
     if(isPremium){closePremium();alert('プレミアムを復元しました！');}
     else{alert('有効なサブスクリプションが見つかりません。');}return;}
   if(localStorage.getItem('thb_jpy_premium')==='1'){isPremium=true;applyPremiumState();closePremium();alert('プレミアムを復元しました！');}
   else{alert('有効なサブスクリプションが見つかりません。');}
 }
 
-applyPremiumState();initBilling();updateCtaText();
+function applyPremiumState(){
+  var b=document.getElementById('premiumBanner'),f=document.getElementById('footerPremium');
+  if(isPremium){b.classList.add('hidden');f.classList.add('hidden');
+    var t=document.getElementById('adTop'),m=document.getElementById('adMid'),bt=document.getElementById('adBottom');
+    if(t)t.style.display='none';if(m)m.style.display='none';if(bt)bt.style.display='none';
+  }else{b.classList.remove('hidden');f.classList.remove('hidden');}
+}
+function showPremium(){document.getElementById('premiumOverlay').classList.remove('hidden');}
+function closePremium(){document.getElementById('premiumOverlay').classList.add('hidden');}
+function selectPlan(plan){selectedPlan=plan;
+  document.getElementById('planYearly').className='premium-plan'+(plan==='yearly'?' selected':'');
+  document.getElementById('planWeekly').className='premium-plan'+(plan==='weekly'?' selected':'');updateCtaText();}
+function toggleTrial(){trialEnabled=!trialEnabled;
+  document.getElementById('trialToggle').className='premium-toggle'+(trialEnabled?'':' off');updateCtaText();}
+function updateCtaText(){var cta=document.getElementById('premiumCta');
+  if(trialEnabled&&selectedPlan==='weekly')cta.textContent='無料で始める \u276F';
+  else if(selectedPlan==='yearly')cta.textContent='登録する \u2014 \u00A52,500/年 \u276F';
+  else cta.textContent='登録する \u2014 \u00A5700/週 \u276F';}
 
-if(!window.__ADS_ENABLED__){var t=document.getElementById('adTop'),m=document.getElementById('adMid');if(t)t.style.display='none';if(m)m.style.display='none';}
+initBilling();updateCtaText();
+
+if(!window.__ADS_ENABLED__){var t=document.getElementById('adTop'),m=document.getElementById('adMid'),b=document.getElementById('adBottom');
+  if(t)t.style.display='none';if(m)m.style.display='none';if(b)b.style.display='none';}
 </script>
 </body>
 </html>
